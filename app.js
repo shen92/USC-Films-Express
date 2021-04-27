@@ -37,6 +37,8 @@ app.get('/api/v1/search/:name', async (req, res) => {
             data.push({
               id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
               name:  util.isValidProperty(result, 'title') ? result.title : "",
+              date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
+              rate: util.isValidProperty(result, 'title') ? result.title : "",
               backdrop_path:  util.isValidProperty(result, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${result.backdrop_path}` : "",
               media_type: 'movie'
             })
@@ -45,6 +47,8 @@ app.get('/api/v1/search/:name', async (req, res) => {
             data.push({
               id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
               name:  util.isValidProperty(result, 'name') ? result.name : "",
+              date: util.isValidProperty(result, 'title') ? result.title : "",
+              rate: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
               backdrop_path:  util.isValidProperty(result, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${result.backdrop_path}` : "",
               media_type: 'tv'
             })
