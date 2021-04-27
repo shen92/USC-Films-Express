@@ -81,6 +81,7 @@ app.get('/api/v1/movies/trending', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           title:  util.isValidProperty(result, 'title') ? result.title : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          release_date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
           media_type: 'movie'
         })
       }
@@ -111,6 +112,7 @@ app.get('/api/v1/movies/top-rated', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           title:  util.isValidProperty(result, 'title') ? result.title : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          release_date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
           media_type: 'movie'
         })
       }
@@ -135,18 +137,19 @@ app.get('/api/v1/movies/currently-playing', async (req, res) => {
   const rawData = await fetchCurrentPlayingMovies();
   let data = [];
   if(rawData.results != null){
-    rawData.results.forEach((result, i) => {
-      if(i < 5){
+    rawData.results.forEach((result) => { 
+      if(util.isValidProperty(result, 'poster_path')){
         data.push({
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           title:  util.isValidProperty(result, 'title') ? result.title : "",
-          poster_path:  util.isValidProperty(result, 'poster_path') ? `${config.IMAGE_PATH_ORIGINAL}${result.backdrop_path}` : "",
+          poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          release_date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
           media_type: 'movie'
         })
       }
     })
   }
-  res.send(({data: data, count: data.length}));
+  res.send({data: data, count: data.length});
   res.end();
 })
 
@@ -171,6 +174,7 @@ app.get('/api/v1/movies/popular', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           title:  util.isValidProperty(result, 'title') ? result.title : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          release_date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
           media_type: 'movie'
         })
       }
@@ -201,6 +205,7 @@ app.get('/api/v1/movie/:id/recommended', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           title:  util.isValidProperty(result, 'title') ? result.title : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          release_date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
           media_type: 'movie'
         })
       }
@@ -231,6 +236,7 @@ app.get('/api/v1/movie/:id/similar', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           title:  util.isValidProperty(result, 'title') ? result.title : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          release_date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
           media_type: 'movie'
         })
       }
@@ -412,6 +418,7 @@ app.get('/api/v1/tvs/trending', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           name:  util.isValidProperty(result, 'name') ? result.name : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          first_air_date: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
           media_type: 'tv'
         })
       }
@@ -442,6 +449,7 @@ app.get('/api/v1/tvs/top-rated', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           name:  util.isValidProperty(result, 'name') ? result.name : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          first_air_date: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
           media_type: 'tv'
         })
       }
@@ -472,6 +480,7 @@ app.get('/api/v1/tvs/popular', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           name:  util.isValidProperty(result, 'name') ? result.name : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          first_air_date: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
           media_type: 'tv'
         })
       }
@@ -502,6 +511,7 @@ app.get('/api/v1/tv/:id/recommended', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           name:  util.isValidProperty(result, 'name') ? result.name : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          first_air_date: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
           media_type: 'tv'
         })
       }
@@ -532,6 +542,7 @@ app.get('/api/v1/tv/:id/similar', async (req, res) => {
           id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
           name:  util.isValidProperty(result, 'name') ? result.name : "",
           poster_path:  `${config.IMAGE_PATH_W500}${result.poster_path}`,
+          first_air_date: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
           media_type: 'tv'
         })
       }
