@@ -38,7 +38,7 @@ app.get('/api/v1/search/:name', async (req, res) => {
               id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
               name:  util.isValidProperty(result, 'title') ? result.title : "",
               date: util.isValidProperty(result, 'release_date') ? result.release_date : "",
-              rate: util.isValidProperty(result, 'vote_average') ? result.vote_average : "",
+              rate: util.isValidProperty(result, 'vote_average', 'number') ? result.vote_average : "",
               backdrop_path:  util.isValidProperty(result, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${result.backdrop_path}` : "",
               media_type: 'movie'
             })
@@ -48,7 +48,7 @@ app.get('/api/v1/search/:name', async (req, res) => {
               id:  util.isValidProperty(result, 'id', 'number') ? result.id : "",
               name:  util.isValidProperty(result, 'name') ? result.name : "",
               date: util.isValidProperty(result, 'first_air_date') ? result.first_air_date : "",
-              rate: util.isValidProperty(result, 'vote_average') ? result.vote_average : "",
+              rate: util.isValidProperty(result, 'vote_average', 'number') ? result.vote_average : "",
               backdrop_path:  util.isValidProperty(result, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${result.backdrop_path}` : "",
               media_type: 'tv'
             })
