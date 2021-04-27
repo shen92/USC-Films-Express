@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "name": "CSCI571-HW9-Express",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shen92/CSCI571-HW8-Express.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shen92/CSCI571-HW8-Express/issues"
+  },
+  "homepage": "https://github.com/shen92/CSCI571-HW8-Express#readme"
+}
