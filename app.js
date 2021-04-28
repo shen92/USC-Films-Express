@@ -334,9 +334,9 @@ app.get('/api/v1/movie/:id/details', async (req, res) => {
       overview:  util.isValidProperty(rawData, 'overview') ? rawData.overview : "",
       vote_average:  util.isValidProperty(rawData, 'vote_average', 'number') ? rawData.vote_average : "",
       tagline:  util.isValidProperty(rawData, 'tagline') ? rawData.tagline : "",
+      backdrop_path:  util.isValidProperty(rawData, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${rawData.backdrop_path}` : "",
+      poster_path:  util.isValidProperty(rawData, 'poster_path') ? `${config.IMAGE_PATH_W500}${rawData.poster_path}` : "",
       id: id,
-      backdrop_path:  util.isValidProperty(result, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${result.backdrop_path}` : "",
-      poster_path:  util.isValidProperty(result, 'poster_path') ? `${config.IMAGE_PATH_W500}${result.poster_path}` : "",
       media_type: 'movie',
     }
   }
@@ -645,8 +645,9 @@ app.get('/api/v1/tv/:id/details', async (req, res) => {
       overview:  util.isValidProperty(rawData, 'overview') ? rawData.overview : "",
       vote_average:  util.isValidProperty(rawData, 'vote_average', 'number') ? rawData.vote_average : "",
       tagline:  util.isValidProperty(rawData, 'tagline') ? rawData.tagline : "",
-      id: id,
+      backdrop_path:  util.isValidProperty(rawData, 'backdrop_path') ? `${config.IMAGE_PATH_W500}${rawData.backdrop_path}` : "",
       poster_path:  util.isValidProperty(rawData, 'poster_path') ? `${config.IMAGE_PATH_W500}${rawData.poster_path}` : "",
+      id: id,
       media_type: 'tv',
     }
   }
